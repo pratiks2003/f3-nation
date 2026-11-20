@@ -416,6 +416,7 @@ describe("oRPC proxy route", () => {
 
   it("reports a missing F3_API_BASE_URL as an error, not as an outage", async () => {
     vi.stubEnv("F3_API_BASE_URL", "");
+    vi.stubEnv("SKIP_ENV_VALIDATION", "1");
     try {
       const { GET } =
         await import("../../../src/app/api/orpc/[[...rest]]/route");
